@@ -36,10 +36,42 @@ export class TodoFormComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    throw new Error("Method not implemented.");
+    if (changes && changes['todo'] && this.todo != null) {
+      this.stepsArray = this.todo.steps;
+      this.stepsControl.clear();
+      this.stepsArray.forEach(step => {
+        this.stepsControl.push(this.fb.group({
+          id: step.id,
+          done: step.done,
+          title: [step.title, Validators.required]
+        }));
+      });
+      this.todoForm.patchValue({
+        id: this.todo.id,
+        title: this.todo.title,
+        description: this.todo.description
+      })
+    }
   }
 
-  ngOnInit(): void {
+  addStepToForm() {
+    this.stepsArray.push({
+      done: false,
+      title: '',
+      id: this.stepsArray.length
+    });
+    this.stepsControl.push(this.fb.group({
+      done: false,
+      title: ['', Validators.required]
+    }));
+  }
+
+  confirmChanges() {
+    this.formSubmitEvent.emit(this.todoForm.value);
+  }
+
+  cancel() {
+    this.undoEvent.emit(this.todoForm.value);
   }
 
 }
