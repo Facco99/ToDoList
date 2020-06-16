@@ -1,0 +1,11 @@
+<div>
+    <h4>{{todo?.title}}</h4>
+    <h5>{{todo?.description}}</h5>
+    <div *ngIf="todo != null && todo.steps != null && todo.steps.length > 0">
+        <div *ngFor="let step of todo.steps">
+            <input type="checkbox" [(ngModel)]="step.done" disabled>
+            <span>{{step.title}}</span>
+        </div>
+    </div>
+    <button (click)="editClick()">Modifica</button>
+</div>
