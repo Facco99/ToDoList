@@ -1,1 +1,5 @@
-<p>login works!</p>
+<form [formGroup]="loginForm" (ngSubmit)="doLogin()">
+    <app-input-text formControlName="username" [label]="'Username'"></app-input-text>
+    <app-input-text formControlName="password" [label]="'Password'"></app-input-text>
+    <button type="submit">Login</button>
+</form>
