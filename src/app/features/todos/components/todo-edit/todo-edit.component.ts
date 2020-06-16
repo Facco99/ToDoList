@@ -5,11 +5,11 @@ import { ActivatedRoute } from '@angular/router';
 import { TodoFacadeService } from '../../services/todo-facade.service';
 
 @Component({
-  selector: 'app-todo-detail',
-  templateUrl: './todo-detail.component.html',
-  styleUrls: ['./todo-detail.component.scss']
+  selector: 'app-todo-edit',
+  templateUrl: './todo-edit.component.html',
+  styleUrls: ['./todo-edit.component.scss']
 })
-export class TodoDetailComponent implements OnInit {
+export class TodoEditComponent implements OnInit {
 
   get todo(): Observable<Todo> {
     return this.todosFacadeService.todoSelected$;
@@ -26,8 +26,12 @@ export class TodoDetailComponent implements OnInit {
     });
   }
 
-  edit(todo: Todo){
-    this.todosFacadeService.goToEdit(todo.id);
+  editForm(todo: Todo) {
+    this.todosFacadeService.editTodo(todo);
+  }
+
+  undo(todo: Todo) {
+    this.todosFacadeService.goToDetail(todo.id);
   }
 
 }

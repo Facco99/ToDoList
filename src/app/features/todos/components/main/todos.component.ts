@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Todo } from 'src/app/core/model/todo';
+import { TodoFacadeService } from '../../services/todo-facade.service';
 
 @Component({
   selector: 'app-todos',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodosComponent implements OnInit {
 
-  constructor() { }
+  get todosList(): Observable<Todo[]> {
+    return this.todosFacadeService.tods$;
+  }
+
+  constructor(private todosFacadeService: TodoFacadeService) { }
 
   ngOnInit(): void {
+    this.todosFacadeService.getAllTodos();
+  }
+
+  showDetail(todo: Todo) {
+    this.todosFacadeService.goToDetail(todo.id);
   }
 
 }

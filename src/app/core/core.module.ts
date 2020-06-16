@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
+import { HttpClientModule } from '@angular/common/http';
+import { HttpCommunicationsService } from './http-communications/http-communications.service';
+import { TodosServerService } from './services/todos-server.service';
 
 
 
 @NgModule({
   declarations: [],
+  providers: [HttpCommunicationsService, TodosServerService],
   imports: [
-    CommonModule
+    HttpClientModule
   ]
 })
 export class CoreModule { }

@@ -1,1 +1,11 @@
-<p>todos works!</p>
+<div class="container">
+    <header>
+        <h1>I miei TODO</h1>
+    </header>
+    <section>
+        <app-todo-preview *ngFor="let todo of todosList | async" [todo]="todo" (detailEvent)="showDetail(todo)"></app-todo-preview>
+    </section>
+    <section>
+        <router-outlet></router-outlet>
+    </section>
+</div>
