@@ -1,6 +1,8 @@
 <div class="container">
     <header>
         <h1>I miei TODO</h1>
+        <p routerLink="/home">Vai alla home</p>
+        <p routerLink="/todos/add">Inserisci nuovo Todo</p>
     </header>
     <section>
         <app-todo-preview *ngFor="let todo of todosList | async" [todo]="todo" (detailEvent)="showDetail(todo)"></app-todo-preview>

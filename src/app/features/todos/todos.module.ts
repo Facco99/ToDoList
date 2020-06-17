@@ -7,10 +7,11 @@ import { TodoDetailComponent } from './components/todo-detail/todo-detail.compon
 import { SharedModule } from 'src/app/shared/shared.module';
 import { TodoEditComponent } from './components/todo-edit/todo-edit.component';
 import { TodoFacadeService } from './services/todo-facade.service';
+import { TodoAddComponent } from './components/todo-add/todo-add.component';
 
 
 @NgModule({
-  declarations: [TodosComponent, TodoDetailComponent, TodoEditComponent],
+  declarations: [TodosComponent, TodoDetailComponent, TodoEditComponent, TodoAddComponent],
   providers: [TodoFacadeService],
   imports: [
     SharedModule,

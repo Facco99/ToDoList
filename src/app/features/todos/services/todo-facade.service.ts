@@ -26,8 +26,14 @@ export class TodoFacadeService {
   editTodo(todo: Todo) {
     this.todosServerService.updateTodo(todo).subscribe(() => {
       this.getAllTodos();
-      this.getTodoById(todo.id);
       this.goToDetail(todo.id);
+    });
+  }
+
+  addTodo(todo: Todo) {
+    this.todosServerService.insertTodo(todo).subscribe(() => {
+      this.getAllTodos();
+      this.router.navigateByUrl("/todos");
     });
   }
 
