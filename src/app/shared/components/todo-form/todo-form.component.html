@@ -3,7 +3,7 @@
     <app-input-text formControlName="description" [label]="'Descrizione'"></app-input-text>
     <div formArrayName="steps">
         <ng-container *ngIf="stepsArray.length > 0">
-            <div *ngFor="let step of todo.steps; let i=index" [formGroupName]="i">
+            <div *ngFor="let step of stepsArray; let i=index" [formGroupName]="i">
                 <input type="checkbox" formControlName="done">
                 <app-input-text formControlName="title" [label]="'Titolo Step'"></app-input-text>
                 <button type="button" (click)="removeStepToForm(i)">Rimuovi Step</button>

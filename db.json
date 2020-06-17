@@ -39,7 +39,12 @@
       "id": 1,
       "title": "Lezione",
       "description": "NGRX",
-      "steps": []
+      "steps": [
+        {
+          "done": false,
+          "title": "A caso"
+        }
+      ]
     }
   ]
 }
