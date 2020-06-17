@@ -66,6 +66,11 @@ export class TodoFormComponent implements OnChanges {
     }));
   }
 
+  removeStepToForm(index: number){
+    this.stepsArray.splice(index, 1);
+    this.stepsControl.removeAt(index);
+  }
+
   confirmChanges() {
     this.formSubmitEvent.emit(this.todoForm.value);
   }

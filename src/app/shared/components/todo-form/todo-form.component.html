@@ -6,11 +6,11 @@
             <div *ngFor="let step of todo.steps; let i=index" [formGroupName]="i">
                 <input type="checkbox" formControlName="done">
                 <app-input-text formControlName="title" [label]="'Titolo Step'"></app-input-text>
-                <button>Rimuovi Step</button>
+                <button type="button" (click)="removeStepToForm(i)">Rimuovi Step</button>
             </div>
         </ng-container>
-        <button (click)="addStepToForm()">Aggiungi Step</button>
+        <button (click)="addStepToForm()" type="button">Aggiungi Step</button>
     </div>
-    <button (click)="cancel()">Annulla</button>
+    <button (click)="cancel()" type="button">Annulla</button>
     <button type="submit" [disabled]="todoForm.invalid">Conferma</button>
 </form>
