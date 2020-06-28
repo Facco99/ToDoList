@@ -19,7 +19,7 @@ export class TodosComponent implements OnInit {
   constructor(private todosFacadeService: TodoFacadeService, private store: Store) { }
 
   ngOnInit(): void {
-    this.todosFacadeService.getAllTodos();
+    
   }
 
   showDetail(todo: Todo) {
