@@ -3,23 +3,22 @@ import { BehaviorSubject } from 'rxjs';
 import { Todo } from 'src/app/core/model/todo';
 import { Router } from '@angular/router';
 import { TodosServerService } from 'src/app/core/services/todos-server.service';
+import { Store } from '@ngrx/store';
+import { initTodos } from 'src/app/redux/todos/todos.actions';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodoFacadeService {
 
-  private todsSubject: BehaviorSubject<Todo[]> = new BehaviorSubject(null);
-  tods$ = this.todsSubject.asObservable();
-
   private todSelectedSubject: BehaviorSubject<Todo> = new BehaviorSubject(null);
   todoSelected$ = this.todSelectedSubject.asObservable();
 
-  constructor(private todosServerService: TodosServerService, private router: Router) { }
+  constructor(private todosServerService: TodosServerService, private router: Router, private store:Store) { }
 
   getAllTodos() {
     this.todosServerService.retrieveAllTodos().subscribe(todos => {
-      this.todsSubject.next(todos);
+      this.store.dispatch(initTodos({todos}))
     });
   }
 
