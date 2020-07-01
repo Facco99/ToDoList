@@ -37,7 +37,7 @@ export class TodoFormComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes && changes['todo'] && this.todo != null) {
-      this.stepsArray = this.todo.steps;
+      this.stepsArray = [...this.todo.steps];
       this.stepsControl.clear();
       this.stepsArray.forEach(step => {
         this.stepsControl.push(this.fb.group({

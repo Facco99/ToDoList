@@ -3,6 +3,7 @@ import { Todo } from '../model/todo';
 import { HttpClient, HttpRequest, HttpParams, HttpEvent, HttpEventType, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
+import { User } from '../model/user';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,20 @@ export class HttpCommunicationsService {
   private host = 'http://localhost:3000/';
 
   constructor(private httpClient: HttpClient) {
+  }
+
+  getUsers(): Observable<any>{
+    return this.httpClient.get<User[]>('http://localhost:3000/users');
+  }
+
+  getMyProfile():Observable<any>{
+    let s:string='http://localhost:3000/users/';
+    if(sessionStorage.getItem('user'))
+      s+=Number.parseInt(sessionStorage.getItem('user'));
+    else if(localStorage.getItem('user'))
+      s+=Number.parseInt(localStorage.getItem('user'));
+    
+    return this.httpClient.get<User>(s);
   }
 
   retrievePostCall<T>(endpoint: string, body: any): Observable<T> {

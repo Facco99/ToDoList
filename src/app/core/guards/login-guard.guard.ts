@@ -9,7 +9,7 @@ export class LoginGuardGuard implements CanLoad {
 
   constructor(private router: Router) { }
   canLoad(route: import("@angular/router").Route, segments: import("@angular/router").UrlSegment[]): boolean | import("rxjs").Observable<boolean> | Promise<boolean> {
-    if (sessionStorage.getItem("user") != null) {
+    if (sessionStorage.getItem('user') || localStorage.getItem('user')) {
       return true;
     } else {
       this.router.navigateByUrl("/login");
