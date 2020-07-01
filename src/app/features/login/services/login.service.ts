@@ -18,9 +18,7 @@ export class LoginService {
     let controllo=false;
     this.usersList.forEach(element => {
       if(element.username==form.username && element.password==form.password){
-        if(form.salva)
-          localStorage.setItem('user', JSON.stringify(element.id));
-        else
+        
           sessionStorage.setItem('user', JSON.stringify(element.id));
           
         controllo=true;
