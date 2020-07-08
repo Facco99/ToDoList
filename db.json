@@ -1,51 +1,44 @@
 {
-  "users": [
-    {
-      "id": 0,
-      "username": "Facco99",
-      "name": "Alessio",
-      "surname": "Facchin",
-      "password": "1234"
-    }
-  ],
-  "todos": [
-    {
-      "id": 0,
-      "title": "Lezione 10/06/2020",
-      "description": "Lezione accademia Bergamo, corso Angular avanzato",
-      "steps": [
-        {
-          "id": 1,
-          "done": false,
-          "title": "Ripasso"
+    "users": [{
+        "id": 0,
+        "username": "Facco99",
+        "name": "Alessio",
+        "surname": "Facchin"
+    }],
+    "todos": [{
+            "id": 0,
+            "title": "Lezione 10/06/2020",
+            "description": "Lezione accademia Bergamo, corso Angular avanzato",
+            "steps": [{
+                    "id": 1,
+                    "done": false,
+                    "title": "Ripasso"
+                },
+                {
+                    "id": 2,
+                    "done": false,
+                    "title": "Teoria"
+                },
+                {
+                    "id": 3,
+                    "done": true,
+                    "title": "Pratica"
+                },
+                {
+                    "id": null,
+                    "done": false,
+                    "title": "A caso"
+                }
+            ]
         },
         {
-          "id": 2,
-          "done": false,
-          "title": "Teoria"
-        },
-        {
-          "id": 3,
-          "done": true,
-          "title": "Pratica"
-        },
-        {
-          "id": null,
-          "done": false,
-          "title": "A caso"
+            "id": 1,
+            "title": "Lezione",
+            "description": "NGRX",
+            "steps": [{
+                "done": false,
+                "title": "A caso"
+            }]
         }
-      ]
-    },
-    {
-      "id": 1,
-      "title": "Lezione",
-      "description": "NGRX",
-      "steps": [
-        {
-          "done": false,
-          "title": "A caso"
-        }
-      ]
-    }
-  ]
+    ]
 }
