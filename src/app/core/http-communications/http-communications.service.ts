@@ -14,20 +14,6 @@ export class HttpCommunicationsService {
   constructor(private httpClient: HttpClient) {
   }
 
-  getUsers(): Observable<any>{
-    return this.httpClient.get<User[]>('http://localhost:3000/users');
-  }
-
-  getMyProfile():Observable<any>{
-    let s:string='http://localhost:3000/users/';
-    if(sessionStorage.getItem('user'))
-      s+=Number.parseInt(sessionStorage.getItem('user'));
-    else if(localStorage.getItem('user'))
-      s+=Number.parseInt(localStorage.getItem('user'));
-    
-    return this.httpClient.get<User>(s);
-  }
-
   retrievePostCall<T>(endpoint: string, body: any): Observable<T> {
     return this.retrieveHttpCall<T>(new HttpRequest<T>('POST', this.host + endpoint, body));
   }

@@ -4,10 +4,11 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
-import { reducer } from './redux/todos/todos.reducers';
+import { todosReducer } from './redux/todos/todos.reducers';
 import { StoreModule } from '@ngrx/store';
 import { environment } from 'src/environments/environment';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { usersReducer } from './redux/users/users.reducers';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     BrowserModule,
     AppRoutingModule,
     CoreModule,
-    StoreModule.forRoot({ todoState: reducer }),
+    StoreModule.forRoot({ todoState: todosReducer, usersState: usersReducer }),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode

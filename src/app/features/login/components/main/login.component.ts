@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   }
 
   doLogin() {
-    this.loginService.executeLogin(this.loginForm.value);
+    this.loginService.executeLogin(this.loginForm.get('username').value);
   }
 
 }
