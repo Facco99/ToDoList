@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TodosServerService } from './core/services/todos-server.service';
 import { Store } from '@ngrx/store';
-import { initTodos } from './redux/todos/todos.actions';
+import { retrieveAllTodos } from './redux/todos/todos.actions';
 
 @Component({
   selector: 'app-root',
@@ -14,8 +14,6 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.todosServerService.retrieveAllTodos().subscribe(todos => {
-      this.store.dispatch(initTodos({ todos }));
-    });
+    this.store.dispatch(retrieveAllTodos());
   }
 }
