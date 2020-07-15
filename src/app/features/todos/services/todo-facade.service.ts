@@ -26,4 +26,8 @@ export class TodoFacadeService {
   goToEdit(id: number) {
     this.router.navigateByUrl('/todos/edit/' + id);
   }
+
+  goToTodosHome() {
+    this.router.navigateByUrl('/todos');
+  }
 }
