@@ -1,6 +1,10 @@
 <div>
     <h4>{{todo?.title}}</h4>
     <h5>{{todo?.description}}</h5>
+    <ng-container *ngIf="todo.users && todo.users.length > 0">
+        <p> Utenti: </p>
+        <li *ngFor="let user of todo.users">{{user}}</li>
+    </ng-container>
     <div *ngIf="todo != null && todo.steps != null && todo.steps.length > 0">
         <div *ngFor="let step of todo.steps">
             <input type="checkbox" [(ngModel)]="step.done" disabled>
