@@ -13,7 +13,7 @@ import { getCurrentNavigatedTodo } from 'src/app/redux/todos';
 })
 export class TodoDetailComponent {
 
-  constructor(private todosFacadeService: TodoFacadeService, private route: ActivatedRoute,private store:Store) {
+  constructor(private todosFacadeService: TodoFacadeService ,private store:Store) {
   }
 
   get todo(): Observable<Todo>{
