@@ -4,33 +4,20 @@ import { Todo } from 'src/app/core/model/todo';
 import { ActivatedRoute } from '@angular/router';
 import { TodoFacadeService } from '../../services/todo-facade.service';
 import { Store, select } from '@ngrx/store';
-import { getTodoById } from 'src/app/redux';
-import { filter, switchMap } from 'rxjs/operators';
+import { getCurrentNavigatedTodo } from 'src/app/redux/todos';
 
 @Component({
   selector: 'app-todo-detail',
   templateUrl: './todo-detail.component.html',
   styleUrls: ['./todo-detail.component.scss']
 })
-export class TodoDetailComponent implements OnInit, OnDestroy {
-
-  private subscription: Subscription = new Subscription();
-  todo:Todo;
+export class TodoDetailComponent {
 
   constructor(private todosFacadeService: TodoFacadeService, private route: ActivatedRoute,private store:Store) {
   }
 
-  ngOnInit(): void {
-    this.subscription.add(this.route.params.pipe(
-      filter(params => params != null && params['id'] != null),
-      switchMap(params => this.store.pipe(select(getTodoById, { id: Number(params['id']) }))),
-    ).subscribe(todo => {
-      this.todo = todo;
-    }));
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+  get todo(): Observable<Todo>{
+    return this.store.pipe(select(getCurrentNavigatedTodo));
   }
 
   edit(todo: Todo){
