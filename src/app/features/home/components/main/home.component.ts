@@ -4,8 +4,9 @@ import { User } from 'src/app/core/model/user';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Todo } from 'src/app/core/model/todo';
-import { getFirstTodo, getCurrentUser } from 'src/app/redux';
 import { filter, map } from 'rxjs/operators';
+import { getFirstTodo } from 'src/app/redux/todos';
+import { getCurrentUser } from 'src/app/redux/users';
 
 @Component({
   selector: 'app-home',
