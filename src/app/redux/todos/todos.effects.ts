@@ -8,7 +8,7 @@ import { Todo } from 'src/app/core/model/todo';
 import { goToDetail } from 'src/app/features/todos/redux/todos-navigation.actions';
 import { Action, select, Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
-import { getCurrentUser } from '..';
+import { getCurrentUser } from '../users';
 
 @Injectable()
 export class TodosEffects {
